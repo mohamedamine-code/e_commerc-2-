@@ -13,7 +13,7 @@ class Introppage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.shop_sharp,size: 70,color: MyTheme.colorScheme.inversePrimary),
+            Icon(Icons.shop_sharp,size: 70,color: MyTheme.colorScheme.primary),
             const SizedBox(height: 20,),
             Text("Minimal Shop",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
             const SizedBox(height: 10,),
