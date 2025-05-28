@@ -7,22 +7,22 @@ class Shop extends ChangeNotifier{
     Product(
       name: "Product 1",
       Descripition: "this is the describition of the product ... ",
-      price: 55.66,
+      price: 155.66,
     ),
     Product(
-      name: "Product 1",
+      name: "Product 2",
       Descripition: "this is the describition of the product ... ",
-      price: 55.66,
+      price: 555.66,
     ),
     Product(
-      name: "Product 1",
+      name: "Product 3",
       Descripition: "this is the describition of the product ... ",
-      price: 55.66,
+      price: 355.66,
     ),
     Product(
-      name: "Product 1",
+      name: "Product 4",
       Descripition: "this is the describition of the product ... ",
-      price: 55.66,
+      price: 455.66,
     ),
   ];
   //list user cart 

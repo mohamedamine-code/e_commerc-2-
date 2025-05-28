@@ -1,10 +1,16 @@
+import 'package:e_commerce_2/compontent/button.dart';
+import 'package:e_commerce_2/models/Shop.dart';
 import 'package:e_commerce_2/models/product.dart';
 import 'package:e_commerce_2/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class list_product extends StatelessWidget {
   final Product product;
-  list_product({required this.product});
+  VoidCallback ShowAlert;
+
+  list_product({required this.product,required this.ShowAlert});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class list_product extends StatelessWidget {
             children: [
               //image product
               Column(
-                crossAxisAlignment:CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     height: 280,
@@ -35,7 +41,7 @@ class list_product extends StatelessWidget {
                     ),
                     child: Icon(Icons.favorite, size: 50),
                   ),
-                  SizedBox(height: 25,),
+                  SizedBox(height: 25),
                   // title product
                   Text(
                     product.name,
@@ -56,7 +62,19 @@ class list_product extends StatelessWidget {
                 ],
               ),
               //price product
-              Text("\$"+product.price.toString(),style: TextStyle(fontSize: 19,color: Colors.white),),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "\$" + product.price.toString(),
+                    style: TextStyle(fontSize: 19, color: Colors.white),
+                  ),
+                  MyButton(onTap: () {
+                    ShowAlert();
+                  }, 
+                  child: Icon(Icons.add)),
+                ],
+              ),
             ],
           ),
         ),

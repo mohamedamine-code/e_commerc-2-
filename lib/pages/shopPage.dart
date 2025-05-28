@@ -7,11 +7,41 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class Shoppage extends StatelessWidget {
+
   const Shoppage({super.key});
+  
+  void ShowAlert(context, Product x) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text(
+            "You are sure to add this product ?",
+            style: TextStyle(fontSize: 16),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Text("nooo"),
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+                context.read<Shop>().additem(x);
+              },
+              icon: Text("yub"),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    final product=context.watch<Shop>().getshop;
+    final product = context.watch<Shop>().getshop;
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -37,17 +67,29 @@ class Shoppage extends StatelessWidget {
       drawer: MyDrawer(),
       body: Column(
         children: [
+          const SizedBox(height: 25),
+          Center(
+            child: Text(
+              "Get your product with premium quality",
+              style: TextStyle(fontSize: 17),
+            ),
+          ),
+          const SizedBox(height: 15),
           SizedBox(
             height: 550,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: product.length,
-              itemBuilder: (BuildContext context,index){
-              return list_product(
-                product: product[index],
-              );
-            }),
-          )
+              itemBuilder: (BuildContext context, index) {
+                return list_product(
+                  ShowAlert: () {
+                    ShowAlert(context, product[index]);
+                  },
+                  product: product[index],
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
